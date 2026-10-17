@@ -21,9 +21,13 @@ using namespace std;
  * negative inputs.
  */
 int factorial(int n) {
-    if (n == 0) {
+    if(n < 0) {
+        error("Negative input! Try again");
+    }
+    if (n == 1) {
         return 1;
-    } else {
+    }
+    else {
         return n * factorial(n - 1);
     }
 }
@@ -79,7 +83,7 @@ void manyPowerCalls(double base, int exp) {
     // change the value of this constant to adjust the number of
     // iterations until you observe time required hitting a reasonable range on
     // your system
-    const int NUM_ITERATIONS = 1;
+    const int NUM_ITERATIONS = 10000000;
 
     for (int i = 0; i < NUM_ITERATIONS; i++) {
         recPower(base, exp);
@@ -96,4 +100,10 @@ PROVIDED_TEST("Time trial recPower, keep base constant, double exp") {
     for (int size = 4; size <= 128; size *= 2) {
         TIME_OPERATION(size, manyPowerCalls(5, size));
     }
+}
+
+
+// STUDENT TESTS
+STUDENT_TEST("Testing negative inputs") {
+    EXPECT_ERROR(factorial(-3));
 }
