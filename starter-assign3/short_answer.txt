@@ -1,26 +1,27 @@
-Before submitting this file, make sure that there are no more TODO
-placeholders remaining in the file (and remove this comment too).
-
-Warmup
-------
-
 Q1. Looking at a call stack listing in a debugger, what is the indication that the program being debugged uses recursion?
-A1. TODO
+A1. The indication that the program we're debugging uses recursion is that, in the call stack, we see that factorial(int) is called on multiple levels. Since we know that each entry in the call stack corresponds to a function that has been called and hasn't executed yet, we can see that factorial(int) has been called by itself multiple times, which is the definition of recursion. 
 
 Q2. Subtract the innermost level number from the outermost to get the maximum count of stack frames that fit in the capacity of the call stack. How many stack frames fit in your system's call stack?
-A2. TODO
+A2. Outermost level number: 16284, Innermost: 1. Outermost - Innermost = 16284 - 1 = 16283. 16283 stack frames fit in our system's call stack. 
 
 Q3. Describe how the symptoms of infinite recursion differ from the symptoms of an infinite loop.
-A3. TODO
+A3. Infinite recursion results in a stack overflow error in QT Creator while infinite loops just keep running and need to be manually terminated. 
 
 Q4. In place of selecting values over a defined range, an alternate approach would be to randomly select values for base and exponent. Such a test case would test something different each time you ran it. This test approach is part of a larger approach known as "fuzz" testing. What do you see as possible benefit and downside of randomness being used in a test case?
-A4. TODO
+A4. A possible benefit to randomly generating numbers for our bases and exponents in test cases is that we can cover a wider breadth of possible runs. However, targeted cases like skipping certain input values or testing the program specifically on a certain kind of number is not possible with such a randomized test function.  
 
 Q5. What was the number of iterations of `recPower` did it take on your system to amount to a quarter second? Copy/paste the time results of the two time trial sequences running on that number of iterations.
-A5. TODO
+A5. The number of iterations was around 10 million for our system to amount to a quarter second. 
+    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =        4) completed in    0.214 secs
+    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =        8) completed in    0.279 secs
+    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       16) completed in    0.349 secs
+    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       32) completed in    0.360 secs
+    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       64) completed in    0.401 secs
+    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =      128) completed in    0.485 secs
 
-Q6. Explain how the recursive structure of `recPower` results in a Big-O runtime of `O(lgN)` relative to the size of its `exp` argument.
-A6. TODO
+
+Q6. Explain how the recursive structure of `recPower` results in a Big-O runtime of `O(logN)` relative to the size of its `exp` argument.
+A6. The recursive structure of `recPower` results in a Big-O runtime of `O(logN)` because the line (double half = recPower(base, exp/2)) cuts our exponent in half, and that also cuts our runtime by half every time the recursive function is called. Following Big-O logic, when we split the runtime like that, the Big-O runtime is defined as O(logN). 
 
 
 Balanced
