@@ -24,19 +24,19 @@ void fillBlackTriangle(GWindow& window, GPoint one, GPoint two, GPoint three) {
  * header comment.
  */
 int drawSierpinskiTriangle(GWindow& window, GPoint one, GPoint two, GPoint three, int order) {
-    if (order == 0) {
+    if (order == 0) { // base case
         fillBlackTriangle(window, one, two, three);
         return 1;
     }
 
-    GPoint mid12((one.x + two.x)/2, (one.y + two.y)/2);
-    GPoint mid23((two.x + three.x)/2, (two.y + three.y)/2);
-    GPoint mid13((one.x + three.x)/2, (one.y + three.y)/2);
+    GPoint mid12((one.x + two.x)/2, (one.y + two.y)/2); // define midpoint between one and two
+    GPoint mid23((two.x + three.x)/2, (two.y + three.y)/2); // define midpoint between two and three
+    GPoint mid13((one.x + three.x)/2, (one.y + three.y)/2); // define midpoint between one and three
 
-    int count = 0;
-    count += drawSierpinskiTriangle(window, one, mid12, mid13, order - 1);
-    count += drawSierpinskiTriangle(window, mid12, two, mid23, order - 1);
-    count += drawSierpinskiTriangle(window, mid13, mid23, three, order - 1);
+    int count = 0; // this is what the function returns, count = number of triangles in the drawing
+    count += drawSierpinskiTriangle(window, one, mid12, mid13, order - 1); // draw bottom left triangle
+    count += drawSierpinskiTriangle(window, mid12, two, mid23, order - 1); // draw top triangle
+    count += drawSierpinskiTriangle(window, mid13, mid23, three, order - 1); // draw bottom right triangle
 
     return count;
 }
