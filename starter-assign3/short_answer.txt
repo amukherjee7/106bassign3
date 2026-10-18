@@ -27,8 +27,8 @@ A6. The recursive structure of `recPower` results in a Big-O runtime of `O(logN)
 Balanced
 --------
 
-Q7. Compare your recursive solution to the iterative approach used for the Check Balance problem in [Section 1][section1]. Which version do you find easier to read and understand? In which version did you find it easier to confirm the correct behavior?
-A7. TODO
+Q7. Compare your recursive solution to the iterative approach used for the Check Balance problem in Section 2. Which version do you find easier to read and understand? In which version did you find it easier to confirm the correct behavior?
+A7. I personally find the recursive solution much easier to read, understand, and verify functionality. Since we don't create a new ADT in the recursive solution and just work within the function itself, it's easy to trace how it works. The checkBalance function from section is a little harder to track because you have the visualize the Stack in your head. However, for the recursive function, the logic makes sense: we check for pairs, and if we find one we just remove it and run the function on the remaining characters until it's empty, and then we return true. If we don't encounter any pairs, we return false. This tracks a lot more easily in my head.
 
 Merge
 -----

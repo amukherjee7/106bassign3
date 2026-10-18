@@ -16,8 +16,15 @@ using namespace std;
  * header comment.
  */
 string operatorsFrom(string str) {
-    /* TODO: Implement this function. */
-    return "";
+    if (str.size() == 0) { // base case
+        return "";
+    }
+    string first = "";
+    char ch = str[0]; // check top char
+    if (ch == '(' || ch == ')' || ch == '[' || ch == ']' || ch == '{' || ch == '}') { // check if top char is an operator
+        first = ch; // set first equal to top char
+    }
+    return first + operatorsFrom(str.substr(1)); // run recursively
 }
 
 /*
@@ -25,8 +32,23 @@ string operatorsFrom(string str) {
  * header comment.
  */
 bool operatorsAreMatched(string ops) {
-    /* TODO: Implement this function. */
-    return false;
+    if (ops.size() == 0) { // base case
+        return true;
+    }
+
+    int pairIndex = ops.find("()"); // check if each operator pair exists
+    if (pairIndex == -1) { // if () doesn't exist
+        pairIndex = ops.find("[]"); // check if [] exists
+    }
+    if (pairIndex == -1) { // if both () and [] don't exist
+        pairIndex = ops.find("{}"); // check if {} exists
+    }
+
+    if (pairIndex == -1) { // if none of the operator pairs exist
+        return false; // we have nothing to check! return false
+    }
+
+    return operatorsAreMatched(ops.substr(0, pairIndex) + ops.substr(pairIndex + 2)); // run recursively, removing the operator pair
 }
 
 /*
@@ -57,7 +79,7 @@ PROVIDED_TEST("operatorsAreMatched on simple example") {
 }
 
 PROVIDED_TEST("isBalanced on example from writeup") {
-    string example ="int main() { int x = 2 * (vec[2] + 3); x = (1 + random()); }";
+    string example = "int main() { int x = 2 * (vec[2] + 3); x = (1 + random()); }";
     EXPECT(isBalanced(example));
 }
 
@@ -65,4 +87,42 @@ PROVIDED_TEST("isBalanced on non-balanced examples from writeup") {
     EXPECT(!isBalanced("( ( [ a ] )"));
     EXPECT(!isBalanced("3 ) ("));
     EXPECT(!isBalanced("{ ( x } y )"));
+}
+
+// STUDENT TEST CASES
+STUDENT_TEST("operatorsFrom on empty string") {
+    EXPECT_EQUAL(operatorsFrom(""), "");
+}
+
+STUDENT_TEST("operatorsFrom on a random char") {
+    EXPECT_EQUAL(operatorsFrom("a"), "");
+}
+
+STUDENT_TEST("operatorsFrom with random chars between operators") {
+    EXPECT_EQUAL(operatorsFrom("(abc)"), "()");
+}
+
+STUDENT_TEST("operatorsAreMatched on an empty string") {
+    EXPECT(operatorsAreMatched(""));
+}
+
+STUDENT_TEST("operatorsAreMatched on nested pairs") {
+    EXPECT(operatorsAreMatched("{[()]}"));
+    EXPECT(operatorsAreMatched("(())"));
+}
+
+STUDENT_TEST("operatorsAreMatched on lone operator") {
+    EXPECT(!operatorsAreMatched("("));
+    EXPECT(!operatorsAreMatched("]"));
+}
+
+STUDENT_TEST("operatorsAreMatched on missing or out of order openers/closers") {
+    EXPECT(!operatorsAreMatched("))"));
+    EXPECT(!operatorsAreMatched("{()"));
+    EXPECT(!operatorsAreMatched(")("));
+}
+
+STUDENT_TEST("operatorsAreMatched on mismatched operator types and random chars") {
+    EXPECT(!operatorsAreMatched("(]"));
+    EXPECT(!operatorsAreMatched("(a)"));
 }
