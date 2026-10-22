@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 20.0.2, 2026-10-21T16:57:17. -->
+<!-- Written by QtCreator 20.0.1, 2026-10-21T22:28:03. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{c61d71b2-085e-42bf-9d9b-e829a00185ec}</value>
+  <value type="QByteArray">{b6fcdef3-b9c0-458a-a1f5-f9412157d72a}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -137,7 +137,7 @@
      <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
-     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/anikaindumukherjee/Desktop/CS 106B/106bassign3/starter-assign3/Recursion.pro</value>
+     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/srishtiboral/Library/CloudStorage/OneDrive-Personal/Stanford/Freshman Year/Fall Quarter/CS 106B/106bassign3/starter-assign3/Recursion.pro</value>
      <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
      <value type="QString" key="ProjectExplorer.RunConfiguration.UniqueId"></value>
      <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -175,7 +175,7 @@
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/anikaindumukherjee/Desktop/CS 106B/106bassign3/starter-assign3/Recursion.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/srishtiboral/Library/CloudStorage/OneDrive-Personal/Stanford/Freshman Year/Fall Quarter/CS 106B/106bassign3/starter-assign3/Recursion.pro</value>
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.UniqueId"></value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
