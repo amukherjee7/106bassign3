@@ -34,10 +34,10 @@ Merge
 -----
 
 Q8. Give a rough estimate of the maximum length sequence that could be successfully merged on your system assuming a recursive implementation of `binaryMerge`.
-A8. TODO
+A8. We would give a rough estimate of around 16,000 elements based on our response for question 2 (16,283 stack frames). We rounded the value down because, when we call binaryMerge, multiple function calls are implemented. This could take up space in our stack and reduce the number a little, but the 16,000 figure is an educated guess. 
 
 Q9. What would be the observed behavior if attempting to recursively merge a sequence larger than that maximum?
-A9. TODO
+A9. When attempting to recursively merge a sequence larger than that maximum, we can infer that a stack overflow would occur. This could cause the program to crash and throw a stack overflow error because the recursive calls would exceed our stack's capacity. 
 
 Q10. Include the data from your execution timing and explain how it supports your Big O prediction for `binaryMerge`.
 A10. TODO
