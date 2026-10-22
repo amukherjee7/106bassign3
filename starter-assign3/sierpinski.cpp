@@ -1,10 +1,15 @@
 /*
- * TODO: remove and replace this file header comment
- * You will edit and turn in this file.
- * Remove starter comments and add your own
- * comments on each function and on complex code sections.
+ * sierpinski.cpp
+ * Names: Srishti Boral, Anika Mukherjee
+ * Course: CS 106B
+ * Description: This file draws a Sierpinski triangle, a fractal made of
+ * smaller copies of itself. drawSierpinskiTriangle recursively splits a
+ * triangle into three half-size triangles at the midpoints of its sides,
+ * draws only the black triangles at order 0, and returns how many black
+ * triangles it drew.
  */
-#include <iostream>    // for cout, endl
+
+#include <iostream>
 #include "recursion.h"
 #include "SimpleTest.h"
 using namespace std;
@@ -19,10 +24,15 @@ void fillBlackTriangle(GWindow& window, GPoint one, GPoint two, GPoint three) {
     window.fillPolygon( {one, two, three} );
 }
 
-/*
- * TODO: Replace this comment with a descriptive function
- * header comment.
- */
+/* Draws a Sierpinski triangle of the given order with corners one, two, and three.
+ * An order 0 triangle is one filled black triangle.
+ * For a higher order, it finds the midpoint of each side and recursively draws
+ * three triangles of order - 1, one in each corner of the original.
+ * Parameters: window (where to draw), one, two, three (the corner points),
+ * order (how many levels of recursion to draw)
+ * Returns: the total number of black triangles drawn
+*/
+
 int drawSierpinskiTriangle(GWindow& window, GPoint one, GPoint two, GPoint three, int order) {
     if (order == 0) { // base case
         fillBlackTriangle(window, one, two, three);
