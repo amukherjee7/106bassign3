@@ -11,13 +11,23 @@ Q4. In place of selecting values over a defined range, an alternate approach wou
 A4. A possible benefit to randomly generating numbers for our bases and exponents in test cases is that we can cover a wider breadth of possible runs. However, targeted cases like skipping certain input values or testing the program specifically on a certain kind of number is not possible with such a randomized test function.  
 
 Q5. What was the number of iterations of `recPower` did it take on your system to amount to a quarter second? Copy/paste the time results of the two time trial sequences running on that number of iterations.
-A5. The number of iterations was around 10 million for our system to amount to a quarter second. 
-    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =        4) completed in    0.214 secs
-    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =        8) completed in    0.279 secs
-    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       16) completed in    0.349 secs
-    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       32) completed in    0.360 secs
-    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       64) completed in    0.401 secs
-    Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =      128) completed in    0.485 secs
+A5. The number of iterations was around 10 million for our system to amount to a quarter second.
+
+    Doubling base, exp kept at 5:
+        Line 95 TIME_OPERATION manyPowerCalls(size, 5) (size =        4) completed in    0.139 secs
+        Line 95 TIME_OPERATION manyPowerCalls(size, 5) (size =        8) completed in    0.139 secs
+        Line 95 TIME_OPERATION manyPowerCalls(size, 5) (size =       16) completed in    0.139 secs
+        Line 95 TIME_OPERATION manyPowerCalls(size, 5) (size =       32) completed in    0.138 secs
+        Line 95 TIME_OPERATION manyPowerCalls(size, 5) (size =       64) completed in    0.139 secs
+        Line 95 TIME_OPERATION manyPowerCalls(size, 5) (size =      128) completed in    0.139 secs
+
+    Doubling exp, base kept at 5:
+        Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =        4) completed in    0.134 secs
+        Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =        8) completed in    0.191 secs
+        Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       16) completed in    0.258 secs
+        Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       32) completed in    0.328 secs
+        Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =       64) completed in    0.400 secs
+        Line 101 TIME_OPERATION manyPowerCalls(5, size) (size =      128) completed in    0.481 secs
 
 
 Q6. Explain how the recursive structure of `recPower` results in a Big-O runtime of `O(logN)` relative to the size of its `exp` argument.
