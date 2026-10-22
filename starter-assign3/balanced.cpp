@@ -1,8 +1,12 @@
 /*
- * TODO: remove and replace this file header comment
- * You will edit and turn in this file.
- * Remove starter comments and add your own
- * comments on each function and on complex code sections.
+ * balanced.cpp
+ * Names: Srishti Boral, Anika Mukherjee
+ * Course: CS 106B
+ * Description: This file checks whether the bracketing operators in a \
+ * string are balanced. operatorsFrom recursively pulls out only the ( ) [ ] { } characters,
+ * and operatorsAreMatched recursively removes matching
+ * pairs until the string is empty (balanced) or no pair is left to remove
+ * (not balanced). isBalanced puts the two together.
  */
 #include <iostream>    // for cout, endl
 #include <string>      // for string class
@@ -11,10 +15,14 @@
 
 using namespace std;
 
-/*
- * TODO: Replace this comment with a descriptive function
- * header comment.
+/* Returns only the bracketing operators ( ) [ ] { } from a string, in the
+ * same order, and drops every other character. It checks the first
+ * character, keeps it if it's an operator, and then recursively handles
+ * the rest of the string.
+ * Parameter: str (the string to filter)
+ * Returns: a string with only the bracketing operators from str
  */
+
 string operatorsFrom(string str) {
     if (str.size() == 0) { // base case
         return "";
@@ -27,9 +35,13 @@ string operatorsFrom(string str) {
     return first + operatorsFrom(str.substr(1)); // run recursively
 }
 
-/*
- * TODO: Replace this comment with a descriptive function
- * header comment.
+/* Returns whether a string of bracketing operators is balanced. An empty
+ * string is balanced. Otherwise it looks for a matching pair "()", "[]",
+ * or "{}" next to each other, removes it, and recursively checks what is
+ * left. If no matching pair can be found, the operators are not balanced.
+ *
+ * Parameter: ops (a string containing only bracketing operators)
+ * Returns: true if the operators are balanced, false otherwise
  */
 bool operatorsAreMatched(string ops) {
     if (ops.size() == 0) { // base case
@@ -102,6 +114,14 @@ STUDENT_TEST("operatorsFrom with random chars between operators") {
     EXPECT_EQUAL(operatorsFrom("(abc)"), "()");
 }
 
+STUDENT_TEST("operatorsFrom keeps all six operator types in order") {
+    EXPECT_EQUAL(operatorsFrom("{x[y](z)}"), "{[]()}");
+}
+
+STUDENT_TEST("operatorsFrom on a string with no operators") {
+    EXPECT_EQUAL(operatorsFrom("hello world 123"), "");
+}
+
 STUDENT_TEST("operatorsAreMatched on an empty string") {
     EXPECT(operatorsAreMatched(""));
 }
@@ -111,7 +131,11 @@ STUDENT_TEST("operatorsAreMatched on nested pairs") {
     EXPECT(operatorsAreMatched("(())"));
 }
 
-STUDENT_TEST("operatorsAreMatched on lone operator") {
+STUDENT_TEST("operatorsAreMatched on pairs side by side") {
+    EXPECT(operatorsAreMatched("()[]{}"));
+}
+
+STUDENT_TEST("operatorsAreMatched on single operator") {
     EXPECT(!operatorsAreMatched("("));
     EXPECT(!operatorsAreMatched("]"));
 }
@@ -122,7 +146,16 @@ STUDENT_TEST("operatorsAreMatched on missing or out of order openers/closers") {
     EXPECT(!operatorsAreMatched(")("));
 }
 
+STUDENT_TEST("operatorsAreMatched on improperly nested pairs") {
+    EXPECT(!operatorsAreMatched("[(])"));
+}
+
 STUDENT_TEST("operatorsAreMatched on mismatched operator types and random chars") {
     EXPECT(!operatorsAreMatched("(]"));
     EXPECT(!operatorsAreMatched("(a)"));
+}
+
+STUDENT_TEST("isBalanced on strings with no operators at all") {
+    EXPECT(isBalanced(""));
+    EXPECT(isBalanced("no brackets here"));
 }
