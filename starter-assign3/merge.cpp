@@ -249,65 +249,6 @@ STUDENT_TEST("binaryMerge w/ super different queue lengths") {
     EXPECT_EQUAL(binaryMerge(a, b), {1, 2, 3, 4, 5, 6, 7, 8});
 }
 
-STUDENT_TEST("Time test: binaryMerge (my test)") {
-    for (int n = 10000; n <= 80000; n *= 2) {
-        Queue<int> a = createSequence(n);
-        Queue<int> b = createSequence(n);
-
-        TIME_OPERATION(a.size() + b.size(), binaryMerge(a, b));
-    }
-}
-
-STUDENT_TEST("Time test: naiveMultiMerge w/ varying n") {
-    int k = 100;
-
-    for (int n = 1000; n <= 16000; n *= 2) {
-        Queue<int> input = createSequence(n);
-        Vector<Queue<int>> all(k);
-        distribute(input, all);
-
-        TIME_OPERATION(n, naiveMultiMerge(all));
-    }
-}
-
-STUDENT_TEST("Time test: naiveMultiMerge w/ varying k") {
-    int n = 16000;
-
-    for (int k = 1; k <= 256; k *= 4) {
-        Queue<int> input = createSequence(n);
-        Vector<Queue<int>> all(k);
-        distribute(input, all);
-
-        TIME_OPERATION(n, naiveMultiMerge(all));
-    }
-}
-
-STUDENT_TEST("Time test: recMultiMerge w/ varying n") {
-    int k = 100;
-
-    for (int n = 1000; n <= 16000; n *= 2) {
-        Queue<int> input = createSequence(n);
-        Vector<Queue<int>> all(k);
-        distribute(input, all);
-
-        TIME_OPERATION(n, recMultiMerge(all));
-    }
-
-}
-
-STUDENT_TEST("Time test: recMultiMerge w/ varying k") {
-    int n = 16000;
-
-    for (int k = 1; k <= 256; k *= 4) {
-        Queue<int> input = createSequence(n);
-        Vector<Queue<int>> all(k);
-        distribute(input, all);
-
-        TIME_OPERATION(n, recMultiMerge(all));
-    }
-
-}
-
 STUDENT_TEST("binaryMerge w/ both queues empty") {
     Queue<int> a;
     Queue<int> b;

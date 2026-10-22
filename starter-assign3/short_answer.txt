@@ -40,13 +40,46 @@ Q9. What would be the observed behavior if attempting to recursively merge a seq
 A9. Stack overflow. It would just quit with no error message, the same way factorial(-3) did in the warmup.
 
 Q10. Include the data from your execution timing and explain how it supports your Big O prediction for `binaryMerge`.
-A10. TODO
+A10.    size =   500000   0.085 secs
+        size =  1000000   0.170 secs
+        size =  2000000   0.340 secs
+        size =  4000000   0.680 secs
+I predicted binaryMerge is O(n), because each element gets moved into the result once. Every time n doubled, the time also doubled almost exactly (0.085, 0.170, 0.340, 0.680). That is linear growth, so it matches O(n).
 
 Q11. Include the data from your execution timing and explain how it supports your Big O prediction for `naiveMultiMerge`.
-A11. TODO
+A11. k fixed at 100, n doubling:
+        size =   20000   0.174 secs
+        size =   40000   0.347 secs
+        size =   80000   0.690 secs
+        size =  160000   1.378 secs
+        size =  320000   2.746 secs
+
+    n fixed at 100000, k times 4:
+        k =   1   0.015 secs
+        k =   4   0.045 secs
+        k =  16   0.149 secs
+        k =  64   0.558 secs
+        k = 256   2.185 secs
+
+I predicted naiveMultiMerge is O(nk), because it merges each of the k queues into a result that keeps getting longer. When n doubled, the time doubled. When k went up 4 times, the time also went up about 4 times. So time grows with both n and k, which matches O(nk).
 
 Q12. Include the data from your execution timing and explain how it demonstrates `O(n log k)` runtime for `recMultiMerge`.
-A12. TODO
+A12. k fixed at 100, n doubling:
+        size =   200000   0.298 secs
+        size =   400000   0.593 secs
+        size =   800000   1.182 secs
+        size =  1600000   2.368 secs
+        size =  3200000   4.747 secs
+
+    n fixed at 1000000, k times 4:
+        k =    1   0.016 secs
+        k =    4   0.435 secs
+        k =   16   0.868 secs
+        k =   64   1.328 secs
+        k =  256   1.870 secs
+        k = 1024   2.230 secs
+
+With k fixed, doubling n doubled the time, so it’s linear in n. With n fixed, multiplying k by 4 only added about 0.4 to 0.5 seconds each step instead of making it 4 times slower. That bit is for log k we think. Together this shows O(nlog k).
 
 Q13. You run `recMultiMerge` on a sequence of size 1 million and see that it completes just fine. Explain why this is not running afoul of the call stack capacity limitation.  _Hint_: How many stack frames (levels) are expected to be on the call stack at the deepest point in the recursion in `recMultiMerge`?
 A13. recMultiMerge cuts the list of queues in half each time, so the recursion is only about log₂(k) levels deep. Even if all 1 million elements started in their own queue (k = 1,000,000), that’s only 20 levels. 20 frames is nowhere near our previous limit of about 16,000. Also, binaryMerge uses a loop, so it doesn’t add a frame for each element.
