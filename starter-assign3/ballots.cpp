@@ -22,7 +22,7 @@ int countAllOrderings(int a, int b) {
     if (a == 0 || b == 0) { // if one person got no votes, only one possible ordering
         return 1;
     } else {
-        return (countAllOrderings(a - 1, b) + countAllOrderings(a, b - 1)); //
+        return (countAllOrderings(a - 1, b) + countAllOrderings(a, b - 1));
     }
 }
 
