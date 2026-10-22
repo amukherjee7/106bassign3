@@ -34,10 +34,10 @@ Merge
 -----
 
 Q8. Give a rough estimate of the maximum length sequence that could be successfully merged on your system assuming a recursive implementation of `binaryMerge`.
-A8. TODO
+A8. Call stack fits 16,283 frames. A recursive binaryMerge would use one stack frame for each element it merges, longest sequence we could merge is about 16,000 elements total.
 
 Q9. What would be the observed behavior if attempting to recursively merge a sequence larger than that maximum?
-A9. TODO
+A9. Stack overflow. It would just quit with no error message, the same way factorial(-3) did in the warmup.
 
 Q10. Include the data from your execution timing and explain how it supports your Big O prediction for `binaryMerge`.
 A10. TODO
@@ -49,4 +49,4 @@ Q12. Include the data from your execution timing and explain how it demonstrates
 A12. TODO
 
 Q13. You run `recMultiMerge` on a sequence of size 1 million and see that it completes just fine. Explain why this is not running afoul of the call stack capacity limitation.  _Hint_: How many stack frames (levels) are expected to be on the call stack at the deepest point in the recursion in `recMultiMerge`?
-A13. TODO
+A13. recMultiMerge cuts the list of queues in half each time, so the recursion is only about log₂(k) levels deep. Even if all 1 million elements started in their own queue (k = 1,000,000), that’s only 20 levels. 20 frames is nowhere near our previous limit of about 16,000. Also, binaryMerge uses a loop, so it doesn’t add a frame for each element.
